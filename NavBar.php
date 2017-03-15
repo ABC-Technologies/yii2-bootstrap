@@ -112,7 +112,7 @@ class NavBar extends Widget
             }
             echo Html::beginTag('div', $this->innerContainerOptions);
         }
-        echo Html::beginTag('div', ['class' => 'navbar-header']);
+//        echo Html::beginTag('div', ['class' => 'navbar-header']);
         if (!isset($this->containerOptions['id'])) {
             $this->containerOptions['id'] = "{$this->options['id']}-collapse";
         }
