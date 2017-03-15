@@ -1,8 +1,8 @@
 <?php
 /**
- * @link http://www.yiiframework.com/
+ * @link      http://www.yiiframework.com/
  * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
+ * @license   http://www.yiiframework.com/license/
  */
 
 namespace yii\bootstrap;
@@ -32,10 +32,10 @@ use yii\helpers\ArrayHelper;
  * NavBar::end();
  * ```
  *
- * @see http://getbootstrap.com/components/#navbar
+ * @see    http://getbootstrap.com/components/#navbar
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  * @author Alexander Kochetov <creocoder@gmail.com>
- * @since 2.0
+ * @since  2.0
  */
 class NavBar extends Widget
 {
@@ -122,7 +122,7 @@ class NavBar extends Widget
             echo Html::a($this->brandLabel, $this->brandUrl === false ? Yii::$app->homeUrl : $this->brandUrl, $this->brandOptions);
         }
         echo Html::endTag('div');
-        Html::addCssClass($this->containerOptions, ['collapse' => 'collapse', 'widget' => 'mr-auto']);
+        Html::addCssClass($this->containerOptions, ['collapse' => 'collapse', 'widget' => 'navbar-collapse']);
         $options = $this->containerOptions;
         $tag = ArrayHelper::remove($options, 'tag', 'div');
         echo Html::beginTag($tag, $options);
@@ -145,16 +145,21 @@ class NavBar extends Widget
 
     /**
      * Renders collapsible toggle button.
+     *
      * @return string the rendering toggle button.
      */
     protected function renderToggleButton()
     {
         $screenReader = "<span class=\"navbar-toggler-icon\">{$this->screenReaderToggleText}</span>";
 
-        return Html::button("{$screenReader}\n&#9776;", [
-            'class' => 'navbar-toggler hidden-sm-up',
-            'data-toggle' => 'collapse',
-            'data-target' => "#{$this->containerOptions['id']}",
-        ]);
+        return Html::button(
+            "{$screenReader}", [
+            'class'         => 'navbar-toggler',
+            'data-toggle'   => 'collapse',
+            'data-target'   => "#{$this->containerOptions['id']}",
+            'aria-controls' => "{$this->containerOptions['id']}",
+            'aria-expanded' => 'false',
+        ]
+        );
     }
 }
