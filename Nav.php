@@ -250,7 +250,8 @@ class Nav extends Widget
             if (ltrim($route, '/') !== $this->route) {
                 return false;
             }
-            unset($item['url']['#']);
+            $url = $item['url'];
+            unset($url['#']);
             if (count($item['url']) > 1) {
                 $params = $item['url'];
                 unset($params[0]);
