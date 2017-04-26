@@ -113,7 +113,7 @@ class Nav extends Widget
         if ($this->params === null) {
             $this->params = Yii::$app->request->getQueryParams();
         }
-        Html::addCssClass($this->options, ['widget' => 'navbar-nav mr-auto']);
+        Html::addCssClass($this->options, ['widget' => 'navbar-nav']);
     }
 
     /**
